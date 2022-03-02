@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @NoArgsConstructor
@@ -22,6 +23,7 @@ public class Planet {
     private long id;
 
     @Column(name = "title")
+    @NotBlank(message = "Title can't be blank")
     private String title;
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,7 @@ public class Master {
     private long id;
 
     @Column(name = "name")
+    @NotBlank(message = "Name can't be blank")
     private String name;
 
     @Column(name = "age")
