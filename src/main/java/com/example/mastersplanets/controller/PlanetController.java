@@ -9,40 +9,40 @@ import java.util.List;
 @RestController
 @RequestMapping("/planets")
 public class PlanetController {
-    private PlanetService service;
+    private PlanetService planetService;
 
     public PlanetController(PlanetService service) {
-        this.service = service;
+        this.planetService = service;
     }
 
     @GetMapping
     public List<Planet> findAllPlanets() {
-        return service.findAllPlanets();
+        return planetService.findAllPlanets();
     }
 
     @GetMapping("/{id}")
     public Planet findPlanet(@PathVariable("id") Long id) {
-        return service.findPlanetById(id);
+        return planetService.findPlanetById(id);
     }
 
     @PostMapping
     public Planet createPlanet(@RequestBody Planet planet) {
-        return service.createPlanet(planet);
+        return planetService.createPlanet(planet);
     }
 
     @PostMapping("/{planetId}/master/{masterId}")
     public Planet assignMaster(@PathVariable("planetId") Long planetId, @PathVariable("masterId") Long masterId) {
-        return service.assignMaster(planetId, masterId);
+        return planetService.assignMaster(planetId, masterId);
     }
 
     @PutMapping("/{id}")
     public Planet updatePlanet(@PathVariable("id") Long id, @RequestBody Planet planet) {
         planet.setId(id);
-        return service.updatePlanet(planet);
+        return planetService.updatePlanet(planet);
     }
 
     @DeleteMapping("/{id}")
     public void deletePlanet(@PathVariable("id") Long id) {
-        service.deletePlanet(id);
+        planetService.deletePlanet(id);
     }
 }

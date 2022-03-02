@@ -11,35 +11,35 @@ import java.util.List;
 
 @Service
 public class MasterService {
-    private MasterRepo repo;
+    private MasterRepo masterRepo;
 
     @Autowired
     public MasterService(MasterRepo repo) {
-        this.repo = repo;
+        this.masterRepo = repo;
     }
 
     public List<Master> findAllMasters() {
-        return repo.findAllByOrderByIdAsc();
+        return masterRepo.findAllByOrderByIdAsc();
     }
 
-    public List<Master> findTop10ByAge() { return repo.findTop10ByOrderByAge(); }
+    public List<Master> findTop10ByAge() { return masterRepo.findTop10ByOrderByAge(); }
 
-    public List<Master> findUnoccupied() { return repo.findByPlanetsIsNull(); }
+    public List<Master> findUnoccupied() { return masterRepo.findByPlanetsIsNull(); }
 
     public Master findMasterById(Long id) {
-        return repo.findById(id).orElse(null);
+        return masterRepo.findById(id).orElse(null);
     }
 
     public Master createMaster(Master master) {
-        return repo.save(master);
+        return masterRepo.save(master);
     }
 
     public Master updateMaster(Master master) {
-        return repo.save(master);
+        return masterRepo.save(master);
     }
 
     public void deleteMaster(Long id) {
-        repo.deleteById(id);
+        masterRepo.deleteById(id);
     }
 
 
